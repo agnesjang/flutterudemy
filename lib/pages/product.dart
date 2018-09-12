@@ -10,29 +10,16 @@ class ProductPage extends StatelessWidget {
   final String description;
 
   ProductPage(this.title, this.imageUrl, this.price, this.description);
-
-  // _showWarningDialog(BuildContext context) {
-  //   showDialog(
-  //       context: context,
-  //       builder: (BuildContext context) {
-  //         return AlertDialog(
-  //             title: Text('Are you sure?'),
-  //             content: Text('This action cannot be undone!'),
-  //             actions: <Widget>[
-  //               FlatButton(
-  //                   child: Text('DISCARD'),
-  //                   onPressed: () {
-  //                     Navigator.pop(context);
-  //                   }),
-  //               FlatButton(
-  //                   child: Text('CONTINUE'),
-  //                   onPressed: () {
-  //                     Navigator.pop(context);
-  //                     Navigator.pop(context, true);
-  //                   })
-  //             ]);
-  //       });
-  // }
+  
+  Widget _buildAddressPriceRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+      Text('Union Square, SF', style: TextStyle(fontFamily: 'Oswald', color: Colors.grey)),
+      Container(margin: EdgeInsets.symmetric(horizontal: 5.0), child: Text("|", style: TextStyle(fontFamily: 'Oswald', color: Colors.grey))),
+      Text('\$' + price.toString(), style: TextStyle(fontFamily: 'Oswald', color: Colors.grey))
+    ],);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,14 +41,7 @@ class ProductPage extends StatelessWidget {
               padding: EdgeInsets.all(10.0),
               child: TitleDefault(title)
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-              Text('Union Square, SF', style: TextStyle(fontFamily: 'Oswald', color: Colors.grey)),
-              Container(margin: EdgeInsets.symmetric(horizontal: 5.0), child: Text("|", style: TextStyle(fontFamily: 'Oswald', color: Colors.grey))),
-              Text('\$' + price.toString(), style: TextStyle(fontFamily: 'Oswald', color: Colors.grey))
-            ],
-            ),
+            _buildAddressPriceRow(),
             Container(
               alignment: Alignment.center,
               padding: EdgeInsets.all(10.0),
